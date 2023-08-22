@@ -171,23 +171,77 @@
 
 // using if, if else and switch to conditionally render something
 
-import React from 'react';
+// import React from 'react';
 
+// function List(props){
+//    if (!props.animals){
+//     return <div>Loading...</div>;
+//    }
+//    if (props.animals.length === 0) {
+//    return <div>There are no animals in the List!</div>;
+// }
+
+//   return(
+//     <ul>
+//       {props.animals.map((animal) =>{
+//         return <li key={animal}>{animal}</li>;
+//       })}
+//     </ul>
+//   );
+// }
+// function App(){
+//   const animals = [];
+
+//   return(
+//     <div>
+//       <h1>Animals: </h1>
+//        <List animals={animals}/>   {/*second statement executing */}
+//       <List />  {/*First statement executing which nomally the case for fetching data in an Api*/}
+//     </div>
+//   );
+// }
+// export default App;
+
+
+
+
+// we can also fetch data with the ternary or and (&&) operators
+
+import React from 'react';
 function List(props){
-   if (!props.animals){
-    return <div>Loading...</div>;
-   }
-   if (props.animals.length === 0) {
-   return <div>There are no animals in the List!</div>;
+  return(
+    <>
+    {!props.animals ?(
+   <div>Loading...</div>     
+    ) : props.animals.length > 0 ? (
+      <ul>
+        {props.animals.map((animal) =>{
+          return <li key={animal}>{animal}</li>;
+        })}
+      </ul>
+    ) : (
+      <div>There are no animals found!</div>
+    )}
+    </>
+  );
 }
 
+// or 
+
+function List(props){
   return(
-    <ul>
-      {props.animals.map((animal) =>{
-        return <li key={animal}>{animal}</li>;
-      })}
-    </ul>
-  );
+    <>
+    {!props.animals && <div>Loading...</div>}
+    {props.animals && props.animals.length > 0 &&(
+      <ul>
+        {props.animals.map((animal) =>{
+          return <li key={animal}>{animal}</li>;
+        })}
+      </ul>
+    )}
+    {props.animals && props.animals.length ===0 && <div>There are noanimals found!</div>}
+    </>
+  )
 }
 function App(){
   const animals = [];
@@ -195,13 +249,9 @@ function App(){
   return(
     <div>
       <h1>Animals: </h1>
-       <List animals={animals}/>   {/*second statement executing */}
-      <List />  {/*First statement executing which nomally the case for fetching data in an Api*/}
+       <List animals={animals}/>  
+      {/* <List />  */}
     </div>
   );
 }
 export default App;
-
-
-
-
