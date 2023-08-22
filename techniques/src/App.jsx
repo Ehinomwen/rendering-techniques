@@ -135,31 +135,71 @@
 
 // export default App;
 // using the && operator 
-import React  from "react";
+// import React  from "react";
 
-function List(props) {
+// function List(props) {
+//   return(
+//     <ul>
+//       {props.animals.map((animal) =>{
+//         return animal.startsWith("L") && <li key={animal}>{animal}</li> ;
+
+//       })}
+//     </ul>
+//   );
+// }
+
+
+//  function App() {
+//    const animals = ["Lion", "Cow", "Snake","Lizard"];
+
+//    return(
+//      <div>
+//        <h1>Animals: </h1>
+//        <List animals={animals}/>
+//      </div>
+//    );
+//  }
+
+
+
+
+
+// export default App;
+
+
+
+
+// using if, if else and switch to conditionally render something
+
+import React from 'react';
+
+function List(props){
+   if (!props.animals){
+    return <div>Loading...</div>;
+   }
+   if (props.animals.length === 0) {
+   return <div>There are no animals in the List!</div>;
+}
+
   return(
     <ul>
       {props.animals.map((animal) =>{
-        return animal.startsWith("L") && <li key={animal}>{animal}</li> ;
-
+        return <li key={animal}>{animal}</li>;
       })}
     </ul>
   );
 }
+function App(){
+  const animals = [];
 
-
- function App() {
-   const animals = ["Lion", "Cow", "Snake","Lizard"];
-
-   return(
-     <div>
-       <h1>Animals: </h1>
-       <List animals={animals}/>
-     </div>
-   );
- }
-
+  return(
+    <div>
+      <h1>Animals: </h1>
+       <List animals={animals}/>   {/*second statement executing */}
+      <List />  {/*First statement executing which nomally the case for fetching data in an Api*/}
+    </div>
+  );
+}
 export default App;
 
 
