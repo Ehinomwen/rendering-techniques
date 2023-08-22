@@ -94,18 +94,18 @@
 // using conditional rendering ui
 
 // using the ternary operator 
-import React  from "react";
+// import React  from "react";
 
-function List(props) {
-  return(
-    <ul>
-      {props.animals.map((animal) =>{
-        return animal.startsWith("L") ? <li key={animal}>{animal}</li> : null;
+// function List(props) {
+//   return(
+//     <ul>
+//       {props.animals.map((animal) =>{
+//         return animal.startsWith("L") ? <li key={animal}>{animal}</li> : null;
 
-      })}
-    </ul>
-  );
-}
+//       })}
+//     </ul>
+//   );
+// }
 
 // or this
 
@@ -120,6 +120,33 @@ function List(props) {
 //     </ul>
 //   );
 // }
+
+
+//  function App() {
+//    const animals = ["Lion", "Cow", "Snake","Lizard"];
+
+//    return(
+//      <div>
+//        <h1>Animals: </h1>
+//        <List animals={animals}/>
+//      </div>
+//    );
+//  }
+
+// export default App;
+// using the && operator 
+import React  from "react";
+
+function List(props) {
+  return(
+    <ul>
+      {props.animals.map((animal) =>{
+        return animal.startsWith("L") && <li key={animal}>{animal}</li> ;
+
+      })}
+    </ul>
+  );
+}
 
 
  function App() {
